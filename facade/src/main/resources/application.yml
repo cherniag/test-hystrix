@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+feign:
+  hystrix:
+    enabled: true
+
+logging:
+  level.com.netflix: info
+
+facade:
+  hystrix:
+    stream:
+      endpoint: /hystrix.stream
+
+integration:
+  user:
+    service:
+      url: http://localhost:8081
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        # This property sets the error percentage at or above which the circuit should trip open
+        # and start short-circuiting requests to fallback logic.
+        errorThresholdPercentage: 40
+        # This property sets the amount of time, after tripping the circuit, to reject requests
+        # before allowing attempts again to determine if the circuit should again be closed.
+        sleepWindowInMilliseconds: 10000

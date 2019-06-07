@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+logging:
+  level.org: info
+
+user:
+  service:
+    error:
+      probability: 0.6
+    timeout:
+      probability: 0.1
+      value: 2000
